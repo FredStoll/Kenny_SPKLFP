@@ -42,6 +42,12 @@ list = dir('*WB*.plx');
     data_lfp.sampleinfo(1,:)=[1 length(data)];
     clear data
 
+    %- subsampling LFP at 256Hz
+    cfg = [];
+    cfg.resamplefs = 256;
+    cfg.detrend = 'no';
+    [data_lfp] = ft_resampledata(cfg, data_lfp);
+
     evt = tsevs;
     
     %- look for the spike data
@@ -70,7 +76,8 @@ list = dir('*WB*.plx');
     end
     
     clear allts allad
+        
+    
     save([OpenedFileName(1:32) ' lfp spk.mat'],'spike','data_lfp','evt')
-
  end
  
