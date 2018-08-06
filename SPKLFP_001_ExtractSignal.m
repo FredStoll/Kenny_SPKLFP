@@ -52,6 +52,7 @@ list = dir('*WB*.plx');
     readall;
 
     %- find the spikes timestamps (only one channel normally)
+    %- verified that I'm using the appropriate spikes!
     keepit=[];p=0;
     clear spike
     for m = 1 : length(allts(:,1))
